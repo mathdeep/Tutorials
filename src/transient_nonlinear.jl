@@ -2,11 +2,11 @@
 # * How to write a nonlinear transient weak form in Gridap
 # * How to setup a time-marching scheme for a nonlinear ODE
 
-# We assume that the reader is familiar with Gridap's API for linear transient PDEs, introduced in [Tutorial 17](@ref transient_linear.jl). We focus here on more advanced features of the ODE module of Gridap, applied to a nonlinear time-dependent PDE.
+# We assume that the reader is familiar with Gridap's API for linear transient PDEs, introduced in [Tutorial 18](@ref transient_linear.jl). We focus here on more advanced features of the ODE module of Gridap, applied to a nonlinear time-dependent PDE.
 
 # ## Problem statement
 
-# We consider the same problem as in [Tutorial 17](@ref transient_linear.jl), and use the same notations: find $u(t): \Omega \to \mathbb{R}$ such that
+# We consider the same problem as in [Tutorial 18](@ref transient_linear.jl), and use the same notations: find $u(t): \Omega \to \mathbb{R}$ such that
 # ```math
 # \left\lbrace
 # \begin{aligned}
@@ -29,7 +29,7 @@
 
 # ## Discrete model, FE spaces, triangulation and quadrature
 
-# We consider the same mesh, FE spaces, triangulation and quadrature as in Tutorial 17:
+# We consider the same mesh, FE spaces, triangulation and quadrature as in [Tutorial 18](@ref transient_linear.jl):
 
 using Gridap
 domain = (-1, +1, -1, +1)
@@ -116,7 +116,7 @@ solver = ThetaMethod(nl_solver, Δt, θ)
 tableau = :SDIRK_2_2
 solver_rk = RungeKutta(nl_solver, lin_solver, Δt, tableau)
 
-# We define the initial condition and the solution using the `solve` function as in Tutorial 17:
+# We define the initial condition and the solution using the `solve` function as in [Tutorial 18](@ref transient_linear.jl):
 
 t0, tF = 0.0, 10.0
 uh0 = interpolate_everywhere(g(t0), Ug(t0))
